@@ -9,3 +9,9 @@
 
 -- NO 2
 divisor n = [ x | x <- [1..n], n `mod` x == 0 ]
+
+-- NO 3
+quickSort [] = []
+quickSort (x:xs) = quickSort [y | y <- xs, y <= x] 
+                   ++ [x] ++ 
+                   quickSort [y | y <- xs, y > x]

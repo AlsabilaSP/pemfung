@@ -33,7 +33,9 @@ data Month
   | November
   | December
  deriving ( Eq, Show )
-
+{-
+The last line – “deriving Show” – tells the system to build a show function for the type Shape (more on this later).
+-}
 -- daysInMonth month year returns the days in the month in the year
 daysInMonth :: Month -> Integer -> Integer
 daysInMonth January   year = 31

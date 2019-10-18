@@ -111,6 +111,32 @@ test2 = [1,2,3] >>= \x -> [4,5] >>= \y -> return (x,y)
 List itu ternyata monad
 Ingat (>>=)  :: m a -> (a -> m b) -> m b
 Jika terdapat x dalam [1,2,3], lakukan monad kedua yaitu jika terdapat y dalam [4,5] lakukan return (x,y) yang mengembalikan [(x,y)]
-Seperti yang dijelaskan di ContohMonad dalam latihan kelas
+Output yang diharapkan adalah [(1,4),(1,5),(2,4),(2,5),(3,4),(3,5)]
+
+Seperti yang dijelaskan di ContohMonad dalam latihan kelas:
+
+instance  Monad []  where	    
+    m >>= k	=  concat (map k m)	    
+    return x	=  [x]	    
+    fail x	=  [ ]
+
+tahap 1
+test_1 = concat (map (\x -> [4,5] >>= (\y -> return (x,y))) 
+                    [1,2,3])
+
+tahap 2
+[4,5] >>= (\y -> return (x,y)) adalah concat (map (\y -> return (x,y) [4,5] )
+test_2 = concat (map (\x -> concat (map (\y -> return (x,y)) [4,5]))
+                     [1,2,3])
+
+tahap 3
+return (x,y) = [(x,y)], seperti deklarasi return di penjelasan awal
+test_3 = concat (map (\x -> concat (map (\y -> [(x,y)]) [4,5] )  ) 
+                     [1,2,3])
+
+tahap 4
+test4 = concat (map (\x -> (concat (map (\y -> [(x,y)])
+                                        [4,5])))
+                    [1,2,3])
 Output yang diharapkan adalah [(1,4),(1,5),(2,4),(2,5),(3,4),(3,5)]
 -}

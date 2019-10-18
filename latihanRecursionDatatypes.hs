@@ -89,3 +89,7 @@ duplicates (x:xs) = exists x xs || duplicates xs
 exists :: Eq a => a -> [a] -> Bool
 exists x []     = False
 exists x (y:ys) = x == y || exists x ys
+
+{-
+Maksud dari Eq a => a adalah typeclass constraint, fungsi duplicates dan exists menerima input a yang merupakan instance dari Eq. 
+-}

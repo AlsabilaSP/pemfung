@@ -89,6 +89,8 @@ monadicFriendLookup animalMap =
   >>= (\pony2ndFriend -> lookup pony2ndFriend animalMap
   >>= (\friend -> Just friend)))
 
+-- y >>= \x -> f x ekivalen dengan x <- y
+
 sugaryFriendLookup :: [(String, String)] -> Maybe String
 sugaryFriendLookup animalMap = do
   ponyFriend    <- lookup "Pony" animalMap

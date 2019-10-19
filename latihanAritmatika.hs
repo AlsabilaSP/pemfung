@@ -46,6 +46,7 @@ mapEval f (e1 :/ e2) = (mapExpr f e1) :/ (mapExpr f e2)
 
 -- Fungsi evaluasi dengan foldr masa percobaan
 -- Asumsi f di sini adalah evaluate
+foldEval :: (Expr -> Float) -> Expr -> Float
 foldEval f (e1 :+ e2) = foldr (+) (f e1) ([f e2])
 foldEval f (e1 :- e2) = foldr (-) (f e1) ([f e2])
 foldEval f (e1 :* e2) = foldr (*) (f e1) ([f e2])

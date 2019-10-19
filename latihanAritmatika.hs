@@ -36,7 +36,7 @@ evaluate (V _) = 0.0
 -- Menurut saya evaluate (V _) sudah correct. evaluate menerima Expr (V _) dan _ bisa apa saja lalu mengembalikan 0.0
 
 -- Fungsi evaluasi dengan map masa percobaan
-mapEval :: (Expr -> Float) -> Expr -> Float
+mapEval :: (Expr -> Float) -> Expr -> Expr
 -- Asumsi f di sini adalah evaluate
 mapEval f (C x) = (C x)
 mapEval f (e1 :+ e2) = (mapExpr f e1) :+ (mapExpr f e2)
